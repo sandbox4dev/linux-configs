@@ -1,0 +1,25 @@
+sudo pacman -S networkmanager nm-applet nm-connection-editor network-manager-applet
+
+sudo nano /etc/NetworkManager/conf.d/dns.conf
+
+[main]
+dns=none
+
+sudo systemctl disable systemd-networkd
+
+sudo systemctl enable NetworkManager
+sudo systemctl start NetworkManager
+
+add to hypr exec-once nm-applet --indicator
+
+reboot
+
+sudo nano /etc/resolv.conf
+
+nameserver 127.0.0.1
+nameserver 9.9.9.9
+nameserver 1.1.1.1
+
+sudo systemctl restart NetworkManager
+
+ping google.com

@@ -1,0 +1,24 @@
+{
+    "include": "~/.config/waybar/modules",
+    "height": 28, // Waybar height (to be removed for auto height)
+    "spacing": 2, // Gaps between modules (4px)
+    
+    "modules-left": [
+        "custom/power",
+        "temperature",
+        "battery",
+        "power-profiles-daemon",
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "hyprland/language",
+        "tray",
+        "pulseaudio",
+        "clock",
+        "custom/swaync"
+    ]    
+}

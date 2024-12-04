@@ -1,0 +1,30 @@
+chmod +x script.sh
+nano ~/.config/systemd/user/wallpaper.timer
+
+
+[Unit]
+Description=Change wallpaper every 45 minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=45min
+Unit=wallpaper.service
+
+[Install]
+WantedBy=timers.target
+
+
+nano ~/.config/systemd/user/wallpaper.service
+
+[Unit]
+Description=Change wallpaper
+
+[Service]
+ExecStart=/path/to/your/script.sh
+
+
+systemctl --user enable wallpaper.timer
+systemctl --user start wallpaper.timer
+
+
+systemctl --user list-timers

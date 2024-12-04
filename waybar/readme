@@ -1,0 +1,3 @@
+run to add config
+waybar -c /home/sava/.config/waybar/config.jsonc
+waybar -s /home/sava/.config/waybar/style.css

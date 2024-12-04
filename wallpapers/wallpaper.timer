@@ -1,0 +1,10 @@
+[Unit]
+Description=Change wallpaper every 45 minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=45min
+Unit=wallpaper.service
+
+[Install]
+WantedBy=timers.target

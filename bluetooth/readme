@@ -1,0 +1,19 @@
+sudo pacman -S bluez bluez-utils      
+sudo pacman -S blueman
+
+sudo systemctl start bluetooth.service
+
+sudo systemctl enable bluetooth.service
+
+#waybar
+{
+  "modules-right": ["bluetooth"],
+  "bluetooth": {
+    "adapter": "hci0",
+    "format": "{}",
+    "on-click": "blueman-manager"
+  }
+
+}
+
+exec-once = blueman-applet

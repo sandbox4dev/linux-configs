@@ -1,0 +1,32 @@
+sudo fallocate -l 24G /swapfile
+or
+sudo dd if=/dev/zero of=/swapfile bs=1M count=24576 status=progress
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+#####################################################################
+sudo nano /etc/fstab
+/swapfile none swap defaults 0 0   or /swapfile none swap sw 0 0
+#####################################################################
+
+sudo blkid
+sudo nano /etc/default/grub
+resume=UUID=abcd-1234-efgh-5678 resume_offset=123456"
+
+sudo filefrag -v /swapfile | grep " 0:" | awk '{print $4}'
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+#####################################################################
+sudo nano
+/etc/dracut.conf.d/resume.conf
+
+add_dracutmodules+=" resume "
+
+or 
+
+cat <<-EOF | sudo tee /etc/dracut.conf.d/resume.conf
+add_dracutmodules+=" resume "
+EOF
+#####################################################################
+sudo dracut-rebuild
+#####################################################################
+reboot and systemctl hibernate 

@@ -1,0 +1,5 @@
+[Unit]
+Description=Change wallpaper
+
+[Service]
+ExecStart=/home/sava/Extra/wallswitcher.sh
