@@ -1,7 +1,7 @@
 {
     "include": "~/.config/waybar/modules",
-    "height": 28, // Waybar height (to be removed for auto height)
-    "spacing": 2, // Gaps between modules (4px)
+    "height": 24, // Waybar height (to be removed for auto height)
+    "spacing": 1, // Gaps between modules (4px)
     
     "modules-left": [
         "custom/power",

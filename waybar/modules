@@ -1,25 +1,50 @@
 {
-	"hyprland/workspaces": {
-         "active-only": false,
-         "disable-scroll": false,
-         "all-outputs": true,
-         "warp-on-scroll": false,
-         "format": "{icon}",
-         "format-icons": {
-             "urgent": "",
-             "active": "",
-             "default": ""
-         }
-     },
+    "hyprland/workspaces": {
+        "active-only": false,
+        "warp-on-scroll": false,
+        "all-outputs": false,
+        "format": "{icon}:[{windows}]",
+        "format-window-separator": "-",
+        "on-click": "activate",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "title<.*youtube.*>": "",
+            "class<firefox>": "",
+            "class<firefox> title<.*github.*>": "",
+            "class<firefox> title<.*twitch|youtube.*>": "",
+            "class<google-chrome>": "",
+            "class<google-chrome> title<.*github.*>": "",
+            "class<google-chrome> title<.*twitch|youtube.*>": "",
+            "class<kitty>": "",
+            "class<sublime_text>": "",
+            "class<jetbrains-idea>": "",
+            "class<thunderbird>": "󰺻",
+            "class<vlc>": "󰕼",
+            "class<nemo>": "",
+            "class<far2l>": "",
+            "class<org.kde.okular>": "󰈦",
+            "class<ONLYOFFICE Desktop Editors>": "󰈭",
+            "class<org.gnome.Calculator>": "",
+            "title<Poe>":"󰭺",
+            "class<org.telegram.desktop>": ""
+        },
+        "format-icons": {
+             "urgent": "󱠇",
+             "active": "->",
+        //     "default": ""
+        },
+        
+        "persistent-workspaces": {
+             "*": 4
+        }
+    },
 
     "hyprland/language": {
-        "format": "{}",
-        "format-en": "en",
-        "format-ru": "ru"
+        "format": "{short}"
     },
 
     "tray": {
-        "spacing": 5
+        "spacing": 7
     },
 
     "bluetooth": {
@@ -55,26 +80,26 @@
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 82,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC} ",
+        "format": " {temperatureC}  ",
         //"format-icons": ["", "", ""]
     },
 
     "battery": {
-    	//"interval": 3,
+    	"interval": 3,
         "states": {
             // "good": 95,
             "warning": 30,
             "critical": 15
         },
         //"format": "{capacity} {icon} {power}",
-        "format": "{capacity} {icon}",
+        "format": "{capacity} {icon} ",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
         "format-alt": "{time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣", "󱟢"]
     },
 
     "power-profiles-daemon": {
@@ -82,38 +107,34 @@
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
-        //"default": "",
-        "default": "P",
-        //"performance": "",
-        "performance": "P",
-        //"balanced": "",
-        "balanced": "B",
-        "power-saver": "E"
-        //"power-saver": ""
+        "default": "󰾅",
+        "performance": "󰓅",
+        "balanced": "󰾅",
+        "power-saver": "󰾆"
       }
     },
 
     "pulseaudio": {
-        "format": "{volume}% {icon}",
+        "format": "{volume}% {icon} ",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": "󰖁 {icon} {format_source}",
+        "format-muted": "󰖁 {format_source}",
         "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["", "", ""]
         },
         "on-click": "pavucontrol -t 3"
     },
 
     "custom/power": {
-        "format" : "⏻ ",
+        "format" : " ",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
