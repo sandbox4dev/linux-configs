@@ -1,10 +1,11 @@
 {
     "hyprland/workspaces": {
+        "icon-size": 32,
         "active-only": false,
         "warp-on-scroll": false,
         "all-outputs": false,
         "format": "{icon}:[{windows}]",
-        "format-window-separator": "-",
+        "format-window-separator": "  ",
         "on-click": "activate",
         "window-rewrite-default": "",
         "window-rewrite": {
@@ -29,13 +30,8 @@
             "class<org.telegram.desktop>": ""
         },
         "format-icons": {
-             "urgent": "󱠇",
-             "active": "->",
-        //     "default": ""
-        },
-        
-        "persistent-workspaces": {
-             "*": 4
+             "urgent": "",
+             "active": "󰜴 "
         }
     },
 
@@ -44,18 +40,14 @@
     },
 
     "tray": {
-        "spacing": 7
-    },
-
-    "bluetooth": {
-    	"adapter": "hci0",
-    	"format": "{}",
-    	"on-click": "blueman-manager"
+        "icon-size": 24,
+        "spacing": 1,
+        "padding": 10
     },
 
     "clock": {
     	"interval": 1,
-    	"format": "{:%H:%M %A, %d, %B}",
+    	"format": "{:%H:%M %A,%d,%B}",
     	"tooltip-format": "<tt><small>{calendar}</small></tt>",
     	"calendar": {
       		"mode"          : "year",
@@ -76,12 +68,8 @@
     },
 
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 82,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": " {temperatureC}  ",
-        //"format-icons": ["", "", ""]
+        "critical-threshold": 85,
+        "format": "{temperatureC}"
     },
 
     "battery": {
@@ -91,18 +79,16 @@
             "warning": 30,
             "critical": 15
         },
-        //"format": "{capacity} {icon} {power}",
-        "format": "{capacity} {icon} ",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}%  ",
-        "format-plugged": "{capacity}%  ",
+        "format": "{capacity}{icon}",
+        "format-full": "{capacity}{icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}",
         "format-alt": "{time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣", "󱟢"]
     },
 
     "power-profiles-daemon": {
+      "icon-size": 32,
       "format": "{icon}",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
@@ -115,9 +101,9 @@
     },
 
     "pulseaudio": {
-        "format": "{volume}% {icon} ",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰖁 {icon} {format_source}",
+        "format": "{volume}{icon}{format_source}",
+        "format-bluetooth": "{volume} {icon} {format_source}",
+        "format-bluetooth-muted": "󰖁 {icon} {format_source}",
         "format-muted": "󰖁 {format_source}",
         "format-source": "",
         "format-source-muted": "",
@@ -147,7 +133,7 @@
     },
 
     "custom/swaync": {
-    	"format": " {} {icon} ",
+    	"format": "{} {icon}",
     	"format-icons": {
       		"notification": "🔔",
       		"none": "🔔",

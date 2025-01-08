@@ -115,9 +115,12 @@ alias clr="clear"
 alias ins="sudo pacman -S"
 alias upd="yay -Syu"
 alias rem="sudo pacman -Rns"
+alias .="nemo . & disown"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export DOCKER_HOST=unix:///var/run/docker.sock

@@ -1,0 +1,95 @@
+* {
+    font: "JetBrainsMono 12";
+    g-spacing: 5px;
+    g-margin: 0;
+    b-color: #000000FF;
+    fg-color: #FFFFFFFF;
+    fgp-color: #888888FF;
+    b-radius: 15px;
+    g-padding: 2px;
+    hl-color: #FFFFFFFF;
+    hlt-color: #000000FF;
+    alt-color: #111111FF;
+    wbg-color: #000000CC;
+    w-padding: 0px;
+}
+
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: "";
+}
+
+listview {
+    columns: 1;
+    lines: 12;
+    fixed-height: true;
+    fixed-columns: true;
+    cycle: true;
+    scrollbar: false;    
+}
+
+window {
+    width: 480px;
+    border-radius: @b-radius;
+    background-color: @wbg-color;
+    padding: @w-padding;
+}
+
+prompt {
+    text-color: @fg-color;
+}
+
+inputbar {
+    children: ["prompt", "entry"];
+    spacing: @g-spacing;
+}
+
+entry {
+    placeholder: "Search";
+    text-color: @fg-color;
+    placeholder-color: @fgp-color;
+}
+
+mainbox {
+    spacing: @g-spacing;
+    margin: @g-margin;
+    padding: @g-padding;
+    children: ["inputbar", "listview", "message"];
+}
+
+element {
+    spacing: @g-spacing;
+    margin: @g-margin;
+    padding: @g-padding;
+    border: 0px solid;
+    border-radius: @b-radius;
+    border-color: @b-color;
+    background-color: transparent;
+    text-color: @fg-color;
+}
+
+element normal.normal {
+	background-color: transparent;
+	text-color: @fg-color;
+}
+
+element alternate.normal {
+	background-color: @alt-color;
+	text-color: @fg-color;
+}
+
+element selected.active {
+	background-color: @hl-color;
+	text-color: @hlt-color;
+}
+
+element selected.normal {
+	background-color: @hl-color;
+	text-color: @hlt-color;
+}
+
+message {
+    background-color: red;
+    border: 0px solid;
+}

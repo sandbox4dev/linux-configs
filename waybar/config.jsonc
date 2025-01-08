@@ -1,13 +1,12 @@
 {
     "include": "~/.config/waybar/modules",
-    "height": 24, // Waybar height (to be removed for auto height)
     "spacing": 1, // Gaps between modules (4px)
     
     "modules-left": [
-        "custom/power",
+        "custom/swaync",
         "temperature",
         "battery",
-        "power-profiles-daemon",
+        "power-profiles-daemon"
     ],
 
     "modules-center": [
@@ -19,6 +18,6 @@
         "tray",
         "pulseaudio",
         "clock",
-        "custom/swaync"
+        "custom/power"
     ]    
 }

@@ -17,9 +17,7 @@ if [ -d "$directory" ]; then
     random_background=$(find "$directory" -type f \( -name "*.jpg" -o -name "*.png" \) | shuf -n 1)
 
     # Проверяем, найдено ли изображение
-    if [ -n "$random_background" ]; then
-        echo "Устанавливаем обои: $random_background"
-        
+    if [ -n "$random_background" ]; then        
         # Устанавливаем обои для каждого монитора
         hyprctl hyprpaper unload all
         
