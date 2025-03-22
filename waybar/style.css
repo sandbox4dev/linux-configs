@@ -1,14 +1,16 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: JetBrainsMono;
-    font-size: 24px;
+    font-family: Ubuntu;
+    font-size: 22px;
+    border-radius: 15px;
+    padding: 1;
+    margin: 0;
 }
 
 window#waybar {
-    background-color: rgba(10, 30, 16, 0.0);
-    color: #0e2645;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background-color: rgba(10, 30, 16, 0.5);
+    color: #CCCCCC;
+    transition: background-color .5s;
+    border-radius: 15px;
 }
 
 window#waybar.hidden {
@@ -18,10 +20,10 @@ window#waybar.hidden {
 window#waybar.empty {
     background-color: transparent;
 }
+
 window#waybar.solo {
     background-color: #FFFFFF;
 }
-
 
 window#waybar.termite {
     background-color: #3F3F3F;
@@ -33,79 +35,99 @@ window#waybar.chromium {
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    /*box-shadow: inset 0 -3px transparent;*/
-    /* Avoid rounded borders under each button name */
     border: none;
-    border-radius: 0;
+    border-radius: 15px;
+    font-size: inherit;
+    padding: 1px;
+    color: inherit;
+    background-color: inherit;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    /*box-shadow: inset 0 -3px #ffffff;*/
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #2980b9;
-}
-
+/* Workspaces */
 #workspaces button {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.5);
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 5px;
+    background-color: rgba(41, 50, 140, 0.4);
+    font-weight: 400;
 }
 
 #workspaces button:hover {
-    color: #CCCC28;
-    background-color: rgba(41, 128, 185, 0.7);
+    background-color: rgba(41, 128, 185, 0.4);
+    font-weight: 800;
 }
 
-/*#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}*/
-#custom-swaync,
-#clock,
-#battery,
-#temperature,
-#pulseaudio,
-#tray,
-#power-profiles-daemon,
-#window,
-#custom-power
-
-
-/* If workspaces is the leftmost module, omit left margin */
+/* Убираем отступы на краях */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+    margin-left: 5;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+    margin-right: 5;
 }
 
 #clock {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 15px;
+    color: #FFFFFF;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
 }
 
 #battery {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 15px;
+    color: #FFFFFF;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
 }
 
-#battery.charging, #battery.plugged {
+#temperature {
+    color: #FFFFFF;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+}
+
+#language {
+    color: #FFFFFF;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Общие стили для кнопок модулей */
+#power-profiles-daemon,
+#pulseaudio,
+#tray,
+#custom-swaync,
+#custom-power,
+#custom-kbacklight,
+#custom-brightness_down,
+#custom-brightness_up {
+    background-color: rgba(41, 128, 185, 0.4);
+    font-weight: 600;
+}
+
+#power-profiles-daemon:hover,
+#pulseaudio:hover,
+#tray:hover,
+#custom-swaync:hover,
+#custom-power:hover,
+#custom-kbacklight:hover,
+#custom-brightness_down:hover,
+#custom-brightness_up:hover {
+    background-color: rgba(41, 128, 185, 0.9);
+    font-weight: 900;
+}
+
+/* Специальные стили */
+#battery.critical:not(.charging),
+#temperature.critical {
+    background-color: rgba(245, 60, 60, 0.9);
 }
 
 @keyframes blink {
@@ -115,105 +137,52 @@ button:hover {
     }
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: rgba(245, 60, 60, 0.6);
-    color: #CCCCCC;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation: blink 0.5s steps(12) infinite alternate;
 }
 
-#power-profiles-daemon {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 10px;
-    padding-left: 10px;
-    border-radius: 15px;
-}
-
+/* Профили питания */
 #power-profiles-daemon.performance {
-    background-color: rgba(245, 60, 60, 0.6);
-    color: #CCCCCC;
+    background-color: rgba(245, 60, 60, 0.4);
 }
 
 #power-profiles-daemon.balanced {
-    background-color: rgba(41, 128, 185, 0.6);
-    color: #CCCCCC;
+    background-color: rgba(41, 128, 185, 0.4);
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: rgba(46, 204, 113, 0.6);
-    color: #CCCCCC;
+    background-color: rgba(46, 204, 113, 0.4);
 }
 
-/*label:focus {
-    background-color: #000000;
-}*/
-
-#pulseaudio {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 15px;
+#power-profiles-daemon.performance:hover {
+    background-color: rgba(245, 60, 60, 0.5);
 }
 
-#pulseaudio.muted {
+#power-profiles-daemon.balanced:hover {
+    background-color: rgba(41, 128, 185, 0.5);
 }
 
-#temperature {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 15px;
+#power-profiles-daemon.power-saver:hover {
+    background-color: rgba(46, 204, 113, 0.5);
 }
 
-#temperature.critical {
-    color: #CCCCCC;
-    background-color: rgba(245, 60, 60, 0.7);
+/* Яркость */
+#custom-brightness_down, 
+#custom-brightness_up {
+    color: #ffcc00;
 }
 
-#tray {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 10px;
-    padding-left: 10px;
-    border-radius: 15px;
-}
-
+/* Трей */
 #tray > .passive {
-    color: #CCCCCC;
     -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: rgba(245, 60, 60, 0.6);
+    background-color: rgba(245, 60, 60, 0.9);
 }
 
-#language {
+/* Backlight */
+#backlight button {
     color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 15px;
-}
-
-#custom-swaync {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 5px;
-    padding-left: 5px;
-    border-radius: 15px;
-}
-#custom-power {
-    color: #CCCCCC;
-    background-color: rgba(41, 128, 185, 0.6);
-    padding-right: 5px;
-    padding-left: 14px;
-    border-radius: 15px;
 }

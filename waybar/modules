@@ -1,53 +1,52 @@
 {
     "hyprland/workspaces": {
-        "icon-size": 32,
         "active-only": false,
         "warp-on-scroll": false,
         "all-outputs": false,
-        "format": "{icon}:[{windows}]",
+        "format": "{icon}: {windows} ",
         "format-window-separator": "  ",
         "on-click": "activate",
-        "window-rewrite-default": "",
+        "window-rewrite-default": "🔎",
         "window-rewrite": {
-            "title<.*youtube.*>": "",
-            "class<firefox>": "",
+            "title<.*youtube.*>": "▶️",
+            "class<firefox>": "🌐",
             "class<firefox> title<.*github.*>": "",
-            "class<firefox> title<.*twitch|youtube.*>": "",
-            "class<google-chrome>": "",
+            "class<firefox> title<.*twitch|youtube.*>": "▶️",
+            "class<google-chrome>": "🌐",
             "class<google-chrome> title<.*github.*>": "",
-            "class<google-chrome> title<.*twitch|youtube.*>": "",
+            "class<google-chrome> title<.*twitch|youtube.*>": "▶️",
             "class<kitty>": "",
-            "class<sublime_text>": "",
-            "class<jetbrains-idea>": "",
-            "class<thunderbird>": "󰺻",
+            "class<sublime_text>": "📝",
+            "class<jetbrains-idea>": "♨️",
+            "class<thunderbird>": "✉️",
             "class<vlc>": "󰕼",
-            "class<nemo>": "",
-            "class<far2l>": "",
-            "class<org.kde.okular>": "󰈦",
-            "class<ONLYOFFICE Desktop Editors>": "󰈭",
-            "class<org.gnome.Calculator>": "",
+            "class<nemo>": "📁",
+            "class<far2l>": "🗃️",
+            "class<org.kde.okular>": "📕",
+            "class<ONLYOFFICE Desktop Editors>": "📘",
+            "class<org.gnome.Calculator>": "🧮",
             "title<Poe>":"󰭺",
             "class<org.telegram.desktop>": ""
         },
         "format-icons": {
-             "urgent": "",
+             "urgent": " ⚠️ ",
              "active": "󰜴 "
         }
     },
 
     "hyprland/language": {
-        "format": "{short}"
+        "format": "{short}",
     },
 
     "tray": {
-        "icon-size": 24,
-        "spacing": 1,
-        "padding": 10
+        "icon-size": 26,
+        "spacing": 3,
+        "padding": 15
     },
 
     "clock": {
     	"interval": 1,
-    	"format": "{:%H:%M %A,%d,%B}",
+    	"format": "{:%H:%M %A, %d, %B}",
     	"tooltip-format": "<tt><small>{calendar}</small></tt>",
     	"calendar": {
       		"mode"          : "year",
@@ -68,60 +67,64 @@
     },
 
     "temperature": {
+        "interval": 3,
         "critical-threshold": 85,
-        "format": "{temperatureC}"
+        "format": "{temperatureC}🌡️"
     },
 
     "battery": {
-    	"interval": 3,
+    	"interval": 60,
         "states": {
             // "good": 95,
             "warning": 30,
-            "critical": 15
+            "critical": 10
         },
-        "format": "{capacity}{icon}",
+        "format": "{capacity} {icon}",
         "format-full": "{capacity}{icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}",
-        "format-alt": "{time}",
-        "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣", "󱟢"]
+        "format-charging": "{capacity} ♻️",
+        "format-plugged": "{capacity} 🔌",
+        //"format-alt": "{time}",
+        "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣", "󱟢"],
+        "on-click": "~/extra/bat_threshold.sh",
+        "tooltip": true,
+        "signal": 10
     },
 
     "power-profiles-daemon": {
-      "icon-size": 32,
       "format": "{icon}",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
-        "default": "󰾅",
-        "performance": "󰓅",
-        "balanced": "󰾅",
-        "power-saver": "󰾆"
+        "default": " 󰾅 ",
+        "performance": " 󰓅 ",
+        "balanced": " 󰾅 ",
+        "power-saver": " 󰾆 "
       }
     },
 
     "pulseaudio": {
-        "format": "{volume}{icon}{format_source}",
-        "format-bluetooth": "{volume} {icon} {format_source}",
-        "format-bluetooth-muted": "󰖁 {icon} {format_source}",
-        "format-muted": "󰖁 {format_source}",
-        "format-source": "",
+        "format": " {volume} {icon} {format_source} ",
+        "format-bluetooth": " {volume} {icon} {format_source} ",
+        "format-bluetooth-muted": " 🔇 {icon} {format_source} ",
+        "format-muted": " 🔇 {format_source}",
+        "format-source": "🎙️",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
+            "headphone": "🎧",
+            "hands-free": "🎧",
+            "headset": "🎧",
+            "phone": "📞",
+            "portable": "📞",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["🔈","🔉","🔊"]
         },
         "on-click": "pavucontrol -t 3"
     },
 
     "custom/power": {
-        "format" : " ",
-		"tooltip": false,
+        "format" : " [] ",
+		"tooltip-format": "ON/OFF",
+        "tooltip": true,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
@@ -150,5 +153,43 @@
     	"on-click": "sleep 0.1 && swaync-client -t -sw",
     	"on-click-right": "swaync-client -d -sw",
     	"escape": true
+    },
+
+    "custom/bigspacer": {
+        "tooltip": false,
+        "format": "     "
+    },
+    "custom/spacer": {
+        "tooltip": false,
+        "format": " "
+    },
+    "custom/kbacklight": {
+        "format": "[⌨️]",
+        "tooltip": false,
+        "exec": "brightnessctl -d asus::kbd_backlight get",
+        "on-click": "CURRENT=$(brightnessctl -d asus::kbd_backlight get); MAX=$(brightnessctl -d asus::kbd_backlight max); if [ $CURRENT -ge $MAX ]; then brightnessctl -d asus::kbd_backlight set 0; else brightnessctl -d asus::kbd_backlight set +1; fi"
+    },
+    "custom/brightness_down": {
+        "format": "  ",
+        "tooltip": false,
+        "on-click": "brightnessctl -d amdgpu_bl1 set 5%-",
+        "exec": "brightnessctl -d amdgpu_bl1 get",
+    },
+    "custom/brightness_up": {
+        "format": "  ",
+        "tooltip": false,
+        "on-click": "brightnessctl -d amdgpu_bl1 set 5%+",
+        "exec": "brightnessctl -d amdgpu_bl1 get",
+    },
+    "backlight": {
+        "format": "{percent}%",
+    },
+
+    "custom/battery_limit": {
+        "format": "🔋 {}%",
+        "exec": "bat threshold | grep -o '[0-9]\\+'",
+        "on-click": "~/extra/bat_threshold.sh",
+        "signal": 10
     }
+
 }

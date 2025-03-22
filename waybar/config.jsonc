@@ -1,23 +1,49 @@
 {
     "include": "~/.config/waybar/modules",
-    "spacing": 1, // Gaps between modules (4px)
-    
+    "spacing": 1,
+    "height": 26,
+    "margin-top": 1,
+
     "modules-left": [
-        "custom/swaync",
-        "temperature",
+        "custom/power",
+        "custom/spacer",
+        "power-profiles-daemon",
+        "custom/bigspacer",
+        "custom/bigspacer",
+        "custom/bigspacer",
         "battery",
-        "power-profiles-daemon"
+        "custom/spacer",
+        "temperature",
+        "custom/spacer",
+        "custom/bigspacer",
+        "custom/bigspacer",
+        "custom/bigspacer",
+        "clock",
+        "custom/spacer"
     ],
 
     "modules-center": [
-        "hyprland/workspaces"
+        "hyprland/workspaces"   
     ],
 
     "modules-right": [
-        "hyprland/language",
         "tray",
+        "custom/spacer",
+        "custom/kbacklight",
+        "custom/spacer",
+        "custom/brightness_up",
+        "backlight",
+        "custom/brightness_down",
+        "custom/bigspacer",
+        "custom/bigspacer",
+        "custom/bigspacer",
+        "custom/bigspacer",
+        "custom/bigspacer",
+        "hyprland/language",
+        "custom/bigspacer",
         "pulseaudio",
-        "clock",
-        "custom/power"
+        "custom/spacer",
+        "custom/swaync",
+        "custom/spacer"
     ]    
 }

@@ -17,6 +17,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_DISABLE_GITSTATUS=true
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -116,6 +117,20 @@ alias ins="sudo pacman -S"
 alias upd="yay -Syu"
 alias rem="sudo pacman -Rns"
 alias .="nemo . & disown"
+alias cursor="/opt/cursor.appimage & disown"
+
+#Docker-aliases
+alias dps="docker ps -a"
+alias di="docker images"
+alias dcu="docker compose up -d"
+alias dcub="docker compose up --build -d"
+alias dcs="docker compose stop"
+alias dcdv="docker compose down --volumes"
+alias dirm="docker image rm"
+alias dc="docker compose"
+
+#alias .="nautilus . & disown"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -123,4 +138,11 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export DOCKER_HOST=unix:///var/run/docker.sock
+unset DOCKER_HOST
+export DOCKER_CONTEXT=desktop-linux
+export DOCKER_HOST=unix:///home/sava/.docker/desktop/docker.sock
+
+export PATH=~/.npm-global/bin:$PATH
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

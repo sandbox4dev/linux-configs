@@ -22,7 +22,6 @@ if [ -d "$directory" ]; then
         hyprctl hyprpaper unload all
         
         for monitor in $monitors; do
-            echo "Применяем обои для монитора: $monitor"
             hyprctl hyprpaper preload "$random_background"
             hyprctl hyprpaper wallpaper "$monitor,$random_background"
         done
